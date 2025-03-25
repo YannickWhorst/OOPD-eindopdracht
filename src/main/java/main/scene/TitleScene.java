@@ -7,6 +7,7 @@ import com.github.hanyaeger.api.scenes.StaticScene;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import main.entities.buttons.StartButton;
 
 public class TitleScene extends StaticScene {
     @Override
@@ -16,13 +17,15 @@ public class TitleScene extends StaticScene {
 
     @Override
     public void setupEntities() {
-        var waterworldText = new TextEntity(
+        var towerShowerText = new TextEntity(
                 new Coordinate2D(getWidth() / 2, 100),
                 "Tower Shower"
         );
-        waterworldText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        waterworldText.setFill(Color.BLUE);
-        waterworldText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
-        addEntity(waterworldText);
+        towerShowerText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        towerShowerText.setFill(Color.BLUE);
+        towerShowerText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
+        addEntity(towerShowerText);
+
+        addEntity(new StartButton(new Coordinate2D(getWidth() / 2, 200)));
     }
 }
