@@ -7,10 +7,11 @@ public class TowerShower extends YaegerGame {
     public static void main(String[] args) {
         launch(args);
     }
+
     @Override
     public void setupGame() {
         setGameTitle("Tower Shower");
-        setSize(new Size(800, 600));
+        setSize(new Size(800, 800));
     }
 
     @Override
