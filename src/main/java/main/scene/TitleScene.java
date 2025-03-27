@@ -12,7 +12,7 @@ import main.entities.buttons.HighScoresButton;
 import main.entities.buttons.StartButton;
 
 public class TitleScene extends StaticScene {
-    private TowerShower towerShower;
+    private final TowerShower towerShower;
     public TitleScene(TowerShower towerShower) {
         this.towerShower = towerShower;
     }
