@@ -1,17 +1,11 @@
 package main.entities.buttons;
 
-import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.entities.impl.TextEntity;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import main.TowerShower;
 
-public class StartButton extends TextEntity {
-    public StartButton(Coordinate2D initialLocation) {
-        super(initialLocation, "Start");
-        setFill(Color.PURPLE);
-        setFont(Font.font("Roboto", FontWeight.BOLD, 20));
-        setAnchorPoint(AnchorPoint.CENTER_CENTER);
+public class StartButton extends Button {
+    public StartButton(Coordinate2D initialLocation, TowerShower towerShower) {
+        super(initialLocation, towerShower, Color.BLUE, "Start", 1);
     }
 }
