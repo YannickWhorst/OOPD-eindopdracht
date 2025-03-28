@@ -5,14 +5,14 @@ import com.github.hanyaeger.api.scenes.TileMap;
 public class GameTileMap extends TileMap {
     @Override
     public void setupEntities() {
-        addEntity(1, GrassTile.class, "sprites/grassTile.jpg");
-        addEntity(2, GrassTile.class, "sprites/pathTile.jpg");
-        addEntity(3, TowerTile.class, "sprites/towerTile.jpg");
+        addEntity(1, GrassTile.class, "sprites/tiles/grassTile.jpg");
+        addEntity(2, GrassTile.class, "sprites/tiles/pathTile.jpg");
+        addEntity(3, TowerTile.class, "sprites/tiles/towerTile.jpg");
     }
 
     @Override
     public int[][] defineMap() {
-        return new int[][] {
+        return new int[][]{
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -31,5 +31,4 @@ public class GameTileMap extends TileMap {
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
         };
     }
-
 }
