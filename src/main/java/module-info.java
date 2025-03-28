@@ -4,6 +4,7 @@ module waterworld {
     exports main;
     exports main.entities.map;
 
-//    opens backgrounds;
+    opens backgrounds;
+    opens sprites.goblins;
     opens sprites.tiles;
 }

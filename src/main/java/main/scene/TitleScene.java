@@ -19,7 +19,7 @@ public class TitleScene extends StaticScene {
 
     @Override
     public void setupScene() {
-
+        setBackgroundImage("backgrounds/Tower_Shower_HomeScreen.jpg", true);
     }
 
     @Override
