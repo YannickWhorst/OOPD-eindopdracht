@@ -14,14 +14,21 @@ import javafx.scene.text.FontWeight;
 import main.TowerShower;
 
 public class Button extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
-    private final TowerShower towerShower;
-    private final int scene;
+    private int scene = 0;
     private final Color color;
 
-    public Button(Coordinate2D initialLocation, TowerShower towerShower, Color color, String text, int scene) {
+    public Button(Coordinate2D initialLocation, Color color, String text, int scene) {
         super(initialLocation, text);
-        this.towerShower = towerShower;
         this.scene = scene;
+        this.color = color;
+
+        setFill(color);
+        setFont(Font.font("Roboto", FontWeight.BOLD, 20));
+        setAnchorPoint(AnchorPoint.CENTER_CENTER);
+    }
+
+    public Button(Coordinate2D initialLocation, Color color, String text) {
+        super(initialLocation, text);
         this.color = color;
 
         setFill(color);
@@ -31,7 +38,7 @@ public class Button extends TextEntity implements MouseButtonPressedListener, Mo
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        this.towerShower.setActiveScene(scene);
+        TowerShower.setScene(scene);
     }
 
     @Override

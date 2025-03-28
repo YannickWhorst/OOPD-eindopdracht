@@ -17,7 +17,7 @@ public class TowerTile extends SpriteEntity implements MouseButtonPressedListene
 
     @Override
     public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) {
-
+        TowerShower.setScene(3);
     }
 
     @Override

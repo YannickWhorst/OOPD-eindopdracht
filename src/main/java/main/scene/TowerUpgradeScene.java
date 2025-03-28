@@ -1,11 +1,12 @@
 package main.scene;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.scenes.StaticScene;
+import com.github.hanyaeger.api.scenes.DynamicScene;
 import javafx.scene.paint.Color;
 import main.entities.buttons.BackButton;
 
-public class HighScoreScene extends StaticScene {
+public class TowerUpgradeScene extends DynamicScene {
+
     @Override
     public void setupScene() {
 
@@ -13,6 +14,6 @@ public class HighScoreScene extends StaticScene {
 
     @Override
     public void setupEntities() {
-        addEntity(new BackButton(new Coordinate2D(getWidth() / 2, 200), Color.BLUE, "Terug", 0));
+        addEntity(new BackButton(new Coordinate2D(getWidth() / 2, 200), Color.BLUE, "Terug", 1));
     }
 }
