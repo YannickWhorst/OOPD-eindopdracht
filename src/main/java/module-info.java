@@ -7,4 +7,5 @@ module towerShower {
     opens backgrounds;
     opens sprites.goblins;
     opens sprites.tiles;
+    opens sprites.towers;
 }

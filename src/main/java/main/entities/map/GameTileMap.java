@@ -25,6 +25,7 @@ public class GameTileMap extends TileMap {
         addEntity(3, GrassTile.class, "sprites/tiles/flowerTile.jpg");
         addEntity(8, GrassTile.class, "sprites/tiles/pathTile.jpg");
         addEntity(9, TowerTile.class, "sprites/tiles/towerTile.jpg");
+        addEntity(10, TowerTile.class, "sprites/towers/showerTower.png"); // Temp
     }
 
     private void initializeMap() {
@@ -64,6 +65,5 @@ public class GameTileMap extends TileMap {
         }
 
         map[x][y] = towerType;
-        System.out.println("Tower placed at: " + x + ", " + y);
     }
 }
