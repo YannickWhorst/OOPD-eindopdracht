@@ -1,4 +1,4 @@
-module waterworld {
+module towerShower {
     requires hanyaeger;
 
     exports main;

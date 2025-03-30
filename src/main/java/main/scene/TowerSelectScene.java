@@ -5,7 +5,7 @@ import com.github.hanyaeger.api.scenes.StaticScene;
 import javafx.scene.paint.Color;
 import main.entities.buttons.BackButton;
 
-public class TowerUpgradeScene extends StaticScene {
+public class TowerSelectScene extends StaticScene {
 
     @Override
     public void setupScene() {

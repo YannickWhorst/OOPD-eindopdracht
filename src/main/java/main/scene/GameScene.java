@@ -17,6 +17,6 @@ public class GameScene extends DynamicScene implements TileMapContainer {
 
     @Override
     public void setupTileMaps() {
-        addTileMap(new GameTileMap());
+        addTileMap(GameTileMap.getInstance());
     }
 }

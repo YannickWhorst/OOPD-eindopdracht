@@ -3,6 +3,21 @@ package main.entities.map;
 import com.github.hanyaeger.api.scenes.TileMap;
 
 public class GameTileMap extends TileMap {
+    private static GameTileMap instance;
+    private int[][] map;
+
+    private GameTileMap() {
+        initializeMap();
+    }
+
+    public static GameTileMap getInstance() {
+        if (instance == null) {
+            instance = new GameTileMap();
+        }
+
+        return instance;
+    }
+
     @Override
     public void setupEntities() {
         addEntity(1, GrassTile.class, "sprites/tiles/grassTile_variation_1.jpg");
@@ -12,9 +27,8 @@ public class GameTileMap extends TileMap {
         addEntity(9, TowerTile.class, "sprites/tiles/towerTile.jpg");
     }
 
-    @Override
-    public int[][] defineMap() {
-        return new int[][] {
+    private void initializeMap() {
+        this.map = new int[][]{
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                 {1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1},
                 {1, 1, 1, 2, 2, 3, 3, 2, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -39,4 +53,17 @@ public class GameTileMap extends TileMap {
         };
     }
 
+    @Override
+    public int[][] defineMap() {
+        return map;
+    }
+
+    public void placeTower(int x, int y, int towerType) {
+        if (map[x][y] != 9) {
+            return;
+        }
+
+        map[x][y] = towerType;
+        System.out.println("Tower placed at: " + x + ", " + y);
+    }
 }

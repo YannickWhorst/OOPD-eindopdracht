@@ -2,10 +2,7 @@ package main;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
-import main.scene.GameScene;
-import main.scene.HighScoreScene;
-import main.scene.TitleScene;
-import main.scene.TowerUpgradeScene;
+import main.scene.*;
 
 public class TowerShower extends YaegerGame {
     private static TowerShower instance;
@@ -40,6 +37,7 @@ public class TowerShower extends YaegerGame {
         addScene(0, new TitleScene());
         addScene(1, new GameScene());
         addScene(2, new HighScoreScene());
-        addScene(3, new TowerUpgradeScene());
+        addScene(3, new TowerSelectScene());
+        addScene(4, new TowerUpgradeScene());
     }
 }
