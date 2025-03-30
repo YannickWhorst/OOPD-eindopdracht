@@ -7,9 +7,9 @@ import com.github.hanyaeger.api.scenes.StaticScene;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import main.entities.buttons.HighScoresButton;
-import main.entities.buttons.QuitButton;
-import main.entities.buttons.StartButton;
+import main.entities.buttons.menuButtons.HighScoresButton;
+import main.entities.buttons.menuButtons.QuitButton;
+import main.entities.buttons.menuButtons.StartButton;
 
 public class TitleScene extends StaticScene {
     @Override

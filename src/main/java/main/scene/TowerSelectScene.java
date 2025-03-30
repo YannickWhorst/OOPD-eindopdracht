@@ -3,7 +3,7 @@ package main.scene;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.StaticScene;
 import javafx.scene.paint.Color;
-import main.entities.buttons.BackButton;
+import main.entities.buttons.menuButtons.BackButton;
 import main.entities.buttons.towerButtons.ShowerTowerButton;
 
 public class TowerSelectScene extends StaticScene {
