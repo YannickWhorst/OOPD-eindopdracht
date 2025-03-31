@@ -35,9 +35,9 @@ public class TowerShower extends YaegerGame {
     @Override
     public void setupScenes() {
         addScene(0, new TitleScene());
-        addScene(1, new GameScene());
-        addScene(2, new HighScoreScene());
+        addScene(1, GameScene.getInstance());
         addScene(3, new TowerSelectScene());
+        addScene(2, new HighScoreScene());
         addScene(4, new TowerUpgradeScene());
     }
 }

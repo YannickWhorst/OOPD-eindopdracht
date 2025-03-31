@@ -6,6 +6,6 @@ import main.entities.buttons.Button;
 
 public class StartButton extends Button {
     public StartButton(Coordinate2D initialLocation) {
-        super(initialLocation, Color.BLUE, "Start", 1);
+        super(initialLocation, Color.BLUE, "Start Spel", 1);
     }
 }

@@ -3,14 +3,26 @@ package main.scene;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.hanyaeger.api.Coordinate2D;
-import main.entities.enemies.Enemy;
+import main.entities.enemies.regularGoblin.RegularGoblin;
 import main.entities.map.GameTileMap;
 
 public class GameScene extends DynamicScene implements TileMapContainer {
 
+    private static GameScene instance;
+
+    private GameScene() {
+    }
+
+    public static GameScene getInstance() {
+        if (instance == null) {
+            instance = new GameScene();
+        }
+        return instance;
+    }
+
     @Override
     public void setupScene() {
-        // Configuraties voor de scene (bijv. achtergrondmuziek, etc.)
+
     }
 
     @Override
@@ -28,7 +40,6 @@ public class GameScene extends DynamicScene implements TileMapContainer {
         for (int y = 0; y < map.length; y++) {
             for (int x = 0; x < map[y].length; x++) {
                 if (map[y][x] == 99) { // SpawnTile gevonden
-                    System.out.println("SpawnTile gevonden op: (" + x + ", " + y + ")");
                     return new Coordinate2D(x * 40, y * 40); // Return de spawnlocatie als Coordinate2D
                 }
             }
@@ -39,7 +50,7 @@ public class GameScene extends DynamicScene implements TileMapContainer {
     private void spawnEnemy() {
         Coordinate2D spawnLocation = findSpawnTile();
         if (spawnLocation != null) {
-            Enemy enemy = new Enemy(spawnLocation);
+            RegularGoblin enemy = new RegularGoblin(spawnLocation);
             addEntity(enemy);
         } else {
             System.out.println("Geen spawnTile gevonden!");

@@ -1,6 +1,7 @@
 package main.entities.map;
 
 import com.github.hanyaeger.api.scenes.TileMap;
+import main.entities.map.tiles.TileType;
 
 public class GameTileMap extends TileMap {
     private static GameTileMap instance;
@@ -20,15 +21,9 @@ public class GameTileMap extends TileMap {
 
     @Override
     public void setupEntities() {
-        addEntity(1, GrassTile.class, "sprites/tiles/grassTile_variation_1.jpg");
-        addEntity(2, GrassTile.class, "sprites/tiles/grassTile_variation_2.jpg");
-        addEntity(3, GrassTile.class, "sprites/tiles/flowerTile.jpg");
-        addEntity(8, GrassTile.class, "sprites/tiles/pathTile.jpg");
-        addEntity(98, GrassTile.class, "sprites/tiles/endTile.jpg");
-        addEntity(99, GrassTile.class, "sprites/tiles/spawnTile.jpg");
-
-        addEntity(9, TowerTile.class, "sprites/tiles/towerTile.jpg");
-        addEntity(10, TowerTile.class, "sprites/towers/showerTower.png"); // Temp
+        for (TileType tileType : TileType.values()) {
+            addEntity(tileType.getId(), tileType.getEntityClass(), tileType.getSpritePath());
+        }
     }
 
     private void initializeMap() {
@@ -61,11 +56,13 @@ public class GameTileMap extends TileMap {
         return map;
     }
 
-    public void placeTower(int x, int y, int towerType) {
-        if (map[x][y] != 9) {
-            return;
+    public void placeTower(int x, int y, TileType tileType) {
+        if (isValidTile(x, y)) {
+            map[x][y] = tileType.getId();
         }
+    }
 
-        map[x][y] = towerType;
+    public boolean isValidTile(int x, int y) {
+        return map[x][y] == 9;
     }
 }

@@ -3,6 +3,7 @@ module towerShower {
 
     exports main;
     exports main.entities.map;
+    exports main.entities.map.tiles;
 
     opens backgrounds;
     opens sprites.goblins;

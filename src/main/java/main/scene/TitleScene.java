@@ -7,7 +7,7 @@ import com.github.hanyaeger.api.scenes.StaticScene;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import main.entities.buttons.menuButtons.HighScoresButton;
+import main.entities.buttons.menuButtons.LeaderboardButton;
 import main.entities.buttons.menuButtons.QuitButton;
 import main.entities.buttons.menuButtons.StartButton;
 
@@ -30,7 +30,7 @@ public class TitleScene extends StaticScene {
         addEntity(towerShowerText);
 
         addEntity(new StartButton(new Coordinate2D(getWidth() / 2, 200)));
-        addEntity(new HighScoresButton(new Coordinate2D(getWidth() / 2, 250)));
+        addEntity(new LeaderboardButton(new Coordinate2D(getWidth() / 2, 250)));
         addEntity(new QuitButton(new Coordinate2D(getWidth() / 2, 300), Color.RED, "Afsluiten"));
     }
 }
