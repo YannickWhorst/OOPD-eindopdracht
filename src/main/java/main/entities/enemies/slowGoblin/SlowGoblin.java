@@ -5,7 +5,6 @@ import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import main.entities.enemies.EnemyMoveTimer;
 import main.entities.enemies.IEnemy;
-import main.entities.enemies.slowGoblin.SlowGoblinSprite;
 import main.entities.map.GameTileMap;
 
 public class SlowGoblin extends DynamicCompositeEntity implements IEnemy, TimerContainer {
@@ -73,6 +72,6 @@ public class SlowGoblin extends DynamicCompositeEntity implements IEnemy, TimerC
 
     @Override
     public void setupTimers() {
-        addTimer(new EnemyMoveTimer(this, 1000));
+        addTimer(new EnemyMoveTimer(this, 1500));
     }
 }
