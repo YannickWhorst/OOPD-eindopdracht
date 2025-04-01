@@ -1,4 +1,4 @@
-package main.entities.enemies.regularGoblin;
+package main.entities.enemies.slowGoblin;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Collided;

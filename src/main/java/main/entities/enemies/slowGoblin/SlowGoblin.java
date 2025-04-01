@@ -1,25 +1,26 @@
-package main.entities.enemies.regularGoblin;
+package main.entities.enemies.slowGoblin;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import main.entities.enemies.EnemyMoveTimer;
 import main.entities.enemies.IEnemy;
+import main.entities.enemies.slowGoblin.SlowGoblinSprite;
 import main.entities.map.GameTileMap;
 
-public class RegularGoblin extends DynamicCompositeEntity implements IEnemy, TimerContainer {
+public class SlowGoblin extends DynamicCompositeEntity implements IEnemy, TimerContainer {
 
     private EnemyMoveTimer moveTimer;
     private Coordinate2D previousLocation; // Houdt de vorige locatie bij
 
-    public RegularGoblin(Coordinate2D initialLocation) {
+    public SlowGoblin(Coordinate2D initialLocation) {
         super(initialLocation);
-        moveTimer = new EnemyMoveTimer(this, 1000);
+        moveTimer = new EnemyMoveTimer(this, 2000);
     }
 
     @Override
     protected void setupEntities() {
-        var goblinSprite = new RegularGoblinSprite(new Coordinate2D(0, 0));
+        var goblinSprite = new SlowGoblinSprite(new Coordinate2D(0, 0));
         addEntity(goblinSprite);
     }
 
