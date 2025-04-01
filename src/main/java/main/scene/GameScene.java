@@ -42,7 +42,7 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
         healthText.setHealthText(10);
         addEntity(healthText);
 
-        addEntity(new TowerSelectHotbar(new Coordinate2D(getWidth() / 2, getHeight() - 50)));
+//        addEntity(new TowerSelectHotbar(new Coordinate2D(getWidth() / 2, getHeight() - 50)));
     }
 
     @Override
@@ -88,4 +88,6 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
         enemies.add(new RegularGoblin(spawnTile));
         addTimer(new EnemySpawnTimer(2000, enemies));
     }
+
+
 }

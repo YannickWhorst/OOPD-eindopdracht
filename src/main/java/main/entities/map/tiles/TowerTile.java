@@ -8,13 +8,15 @@ import com.github.hanyaeger.api.userinput.MouseEnterListener;
 import com.github.hanyaeger.api.userinput.MouseExitListener;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseButton;
-import main.TowerShower;
+import main.entities.hotbar.towerSelectHotbar.TowerSelectHotbar;
 import main.entities.map.GameTileMap;
+import main.scene.GameScene;
 
 public class TowerTile extends SpriteEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
     private static int tileX, tileY;
     private final GameTileMap gameTileMap = GameTileMap.getInstance();
     private final int TILE_WIDTH = 40, TILE_HEIGHT = 40;
+
 
     public TowerTile(Coordinate2D initialLocation, Size size, String resource) {
         super(resource, initialLocation, size);
@@ -23,7 +25,11 @@ public class TowerTile extends SpriteEntity implements MouseButtonPressedListene
     @Override
     public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) {
         getLatestTileLocation(coordinate2D);
-        TowerShower.setScene(3);
+        // Bijvoorbeeld wanneer een speler op een knop drukt of een bepaalde actie uitvoert
+        TowerSelectHotbar hotbar = new TowerSelectHotbar(new Coordinate2D(250, 700), tileX, tileY);
+        GameScene.getInstance().addNewEntity(hotbar);
+
+
     }
 
     @Override
