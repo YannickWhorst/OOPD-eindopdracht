@@ -6,15 +6,16 @@ import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import main.entities.enemies.EnemyMoveTimer;
 import main.entities.enemies.IEnemy;
 import main.entities.map.GameTileMap;
+import main.entities.map.tiles.TileType;
 
 public class SlowGoblin extends DynamicCompositeEntity implements IEnemy, TimerContainer {
 
-    private EnemyMoveTimer moveTimer;
+    private final int PATH_TILE = TileType.PATH.getId();
+    private final int END_TILE = TileType.END.getId();
     private Coordinate2D previousLocation; // Houdt de vorige locatie bij
 
     public SlowGoblin(Coordinate2D initialLocation) {
         super(initialLocation);
-        moveTimer = new EnemyMoveTimer(this, 2000);
     }
 
     @Override
@@ -35,38 +36,28 @@ public class SlowGoblin extends DynamicCompositeEntity implements IEnemy, TimerC
         int y = (int) getAnchorLocation().getY() / tileSize;
 
         int[][] map = GameTileMap.getInstance().defineMap();
-        Coordinate2D newLocation = null;
+        int[][] directions = {
+                {0, -1},  // Up
+                {1, 0},   // Right
+                {0, 1},   // Down
+                {-1, 0}   // Left
+        };
 
-        // Controleer omliggende tiles en vermijd teruggaan
-        if (y > 0 && map[y - 1][x] == 8) { // Boven
-            Coordinate2D candidate = new Coordinate2D(x * tileSize, (y - 1) * tileSize);
-            if (!candidate.equals(previousLocation)) {
-                newLocation = candidate;
-            }
-        }
-        if (x < map[0].length - 1 && map[y][x + 1] == 8) { // Rechts
-            Coordinate2D candidate = new Coordinate2D((x + 1) * tileSize, y * tileSize);
-            if (!candidate.equals(previousLocation)) {
-                newLocation = candidate;
-            }
-        }
-        if (y < map.length - 1 && map[y + 1][x] == 8) { // Onder
-            Coordinate2D candidate = new Coordinate2D(x * tileSize, (y + 1) * tileSize);
-            if (!candidate.equals(previousLocation)) {
-                newLocation = candidate;
-            }
-        }
-        if (x > 0 && map[y][x - 1] == 8) { // Links
-            Coordinate2D candidate = new Coordinate2D((x - 1) * tileSize, y * tileSize);
-            if (!candidate.equals(previousLocation)) {
-                newLocation = candidate;
-            }
-        }
+        for (int[] direction : directions) {
+            int newX = x + direction[0];
+            int newY = y + direction[1];
 
-        // Update de locatie als er een geldige beweging is
-        if (newLocation != null && !newLocation.equals(previousLocation)) {
-            previousLocation = getAnchorLocation();
-            setAnchorLocation(newLocation);
+            if (newY >= 0 && newY < map.length && newX >= 0 && newX < map[0].length &&
+                    (map[newY][newX] == PATH_TILE || map[newY][newX] == END_TILE)) {
+
+                Coordinate2D candidate = new Coordinate2D(newX * tileSize, newY * tileSize);
+
+                if (!candidate.equals(previousLocation)) {
+                    previousLocation = getAnchorLocation();
+                    setAnchorLocation(candidate);
+                    return;
+                }
+            }
         }
     }
 

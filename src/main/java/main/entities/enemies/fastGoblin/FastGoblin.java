@@ -1,4 +1,4 @@
-package main.entities.enemies.regularGoblin;
+package main.entities.enemies.fastGoblin;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.TimerContainer;
@@ -7,20 +7,25 @@ import main.entities.enemies.EnemyMoveTimer;
 import main.entities.enemies.IEnemy;
 import main.entities.map.GameTileMap;
 import main.entities.map.tiles.TileType;
+import main.entities.text.HealthText;
 
-public class RegularGoblin extends DynamicCompositeEntity implements IEnemy, TimerContainer {
+public class FastGoblin extends DynamicCompositeEntity implements IEnemy, TimerContainer {
 
     private Coordinate2D previousLocation;
     private final int PATH_TILE = TileType.PATH.getId();
     private final int END_TILE = TileType.END.getId();
+    private final HealthText healthText;
 
-    public RegularGoblin(Coordinate2D initialLocation) {
+    public FastGoblin(Coordinate2D initialLocation, HealthText healthText) {
         super(initialLocation);
+        this.healthText = healthText;
     }
 
     @Override
     protected void setupEntities() {
-        var goblinSprite = new RegularGoblinSprite(new Coordinate2D(0, 0));
+        var goblinHitbox = new HitBox(new Coordinate2D(-10, -10), healthText, this);
+        addEntity(goblinHitbox);
+        var goblinSprite = new FastGoblinSprite(new Coordinate2D(0, 0));
         addEntity(goblinSprite);
     }
 
@@ -64,6 +69,6 @@ public class RegularGoblin extends DynamicCompositeEntity implements IEnemy, Tim
 
     @Override
     public void setupTimers() {
-        addTimer(new EnemyMoveTimer(this, 1000));
+        addTimer(new EnemyMoveTimer(this, 500));
     }
 }

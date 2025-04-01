@@ -7,6 +7,7 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import main.entities.enemies.EnemySpawnTimer;
 import main.entities.enemies.IEnemy;
+import main.entities.enemies.fastGoblin.FastGoblin;
 import main.entities.enemies.regularGoblin.RegularGoblin;
 import main.entities.enemies.slowGoblin.SlowGoblin;
 import main.entities.hotbar.towerSelectHotbar.TowerSelectHotbar;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 
 public class GameScene extends DynamicScene implements TileMapContainer, TimerContainer {
     private int health = 10;
+    public HealthText healthText = new HealthText(new Coordinate2D(0, 0));
 
     private static GameScene instance;
 
@@ -37,7 +39,6 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
 
     @Override
     public void setupEntities() {
-        var healthText = new HealthText(new Coordinate2D(0, 0));
         healthText.setHealthText(10);
         addEntity(healthText);
 
@@ -62,13 +63,13 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
 
         for (int y = 0; y < map.length; y++) {
             for (int x = 0; x < map[y].length; x++) {
-                if (map[y][x] == 99) { // SpawnTile gevonden
-                    return new Coordinate2D(x * 40, y * 40); // Return de spawnlocatie als Coordinate2D
+                if (map[y][x] == 99) {
+                    return new Coordinate2D(x * 40, y * 40);
                 }
             }
         }
 
-        return null; // Geen spawnTile gevonden
+        return null;
     }
 
     public void addNewEntity(YaegerEntity yaegerEntity) {
@@ -79,6 +80,8 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
     public void setupTimers() {
         Coordinate2D spawnTile = findSpawnTile();
         ArrayList<IEnemy> enemies = new ArrayList<>();
+        enemies.add(new FastGoblin(spawnTile, healthText));
+        enemies.add(new FastGoblin(spawnTile, healthText));
         enemies.add(new RegularGoblin(spawnTile));
         enemies.add(new RegularGoblin(spawnTile));
         enemies.add(new SlowGoblin(spawnTile));
