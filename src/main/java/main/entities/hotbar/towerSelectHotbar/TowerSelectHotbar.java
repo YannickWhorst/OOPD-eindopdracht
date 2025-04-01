@@ -16,6 +16,6 @@ public class TowerSelectHotbar extends CompositeEntity {
     @Override
     protected void setupEntities() {
         // Gebruik de correcte tegelcoördinaten
-        addEntity(new ShowerTowerButton(new Coordinate2D(0, 0), tileX, tileY));
+        addEntity(new ShowerTowerButton(new Coordinate2D(0, 0), tileX, tileY, this));
     }
 }

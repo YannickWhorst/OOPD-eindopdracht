@@ -8,21 +8,19 @@ import com.github.hanyaeger.api.userinput.MouseEnterListener;
 import com.github.hanyaeger.api.userinput.MouseExitListener;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseButton;
-import javafx.scene.paint.Color;
-import main.TowerShower;
-import main.entities.buttons.Button;
 import main.entities.map.GameTileMap;
 import main.entities.map.tiles.TileType;
-import main.scene.GameScene;
 
 public class ShowerTowerButton extends SpriteEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
     private final int tileX, tileY;
     private final GameTileMap gameTileMapInstance = GameTileMap.getInstance();
+    private final TowerSelectHotbar towerSelectHotbar;
 
-    public ShowerTowerButton(Coordinate2D initialLocation, int tileX, int tileY) {
+    public ShowerTowerButton(Coordinate2D initialLocation, int tileX, int tileY, TowerSelectHotbar towerSelectHotbar) {
         super("sprites/towers/showerTower.png", initialLocation, new Size(50));
         this.tileX = tileX;
         this.tileY = tileY;
+        this.towerSelectHotbar = towerSelectHotbar;
     }
 
     public void onMouseEntered() {
@@ -36,6 +34,6 @@ public class ShowerTowerButton extends SpriteEntity implements MouseButtonPresse
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
         gameTileMapInstance.placeTower(this.tileX, this.tileY, TileType.SHOWER_TOWER);
-        TowerShower.setScene(1);
+        towerSelectHotbar.remove();
     }
 }
