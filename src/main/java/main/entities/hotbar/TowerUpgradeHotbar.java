@@ -1,11 +1,11 @@
-package main.scene;
+package main.entities.hotbar;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.StaticScene;
 import javafx.scene.paint.Color;
 import main.entities.buttons.menuButtons.BackButton;
 
-public class TowerUpgradeScene extends StaticScene {
+public class TowerUpgradeHotbar extends StaticScene {
 
     @Override
     public void setupScene() {

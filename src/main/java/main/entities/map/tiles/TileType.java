@@ -11,7 +11,7 @@ public enum TileType {
     SPAWN(99, GrassTile.class, "sprites/tiles/spawnTile.jpg"),
     TOWER_TILE(9, TowerTile.class, "sprites/tiles/towerTile.jpg"),
     SHOWER_TOWER(10, ShowerTowerTile.class, "sprites/towers/showerTower.png"),
-    BATHTUB_TOWER(11, TowerTile.class, "sprites/towers/bathtubTower.png");
+    BATHTUB_TOWER(11, ShowerTowerTile.class, "sprites/towers/bathtubTower.png");
 
     private final int id;
     private final Class<? extends YaegerEntity> entityClass;
