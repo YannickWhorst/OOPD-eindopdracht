@@ -1,4 +1,4 @@
-package main.entities.enemies.fastGoblin;
+package main.entities.enemies;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Collided;
@@ -11,14 +11,16 @@ import main.scene.GameScene;
 
 import java.util.List;
 
-public class HitBox extends RectangleEntity implements Collided {
+public abstract class Hitbox extends RectangleEntity implements Collided {
     private final HealthText healthText;
-    private final FastGoblin goblin;
+    private final Enemy enemy;
+    private final int damage;
 
-    protected HitBox(Coordinate2D initialLocation, HealthText healthText, FastGoblin goblin) {
+    protected Hitbox(Coordinate2D initialLocation, HealthText healthText, Enemy enemy, int damage) {
         super(initialLocation);
         this.healthText = healthText;
-        this.goblin = goblin;
+        this.enemy = enemy;
+        this.damage = damage;
         setWidth(60);
         setHeight(60);
         setFill(Color.TRANSPARENT);
@@ -28,10 +30,10 @@ public class HitBox extends RectangleEntity implements Collided {
     public void onCollision(List<Collider> collidingObjects) {
         for (Collider collider : collidingObjects) {
             if (collider instanceof EndTile) {
-                int newHealth = GameScene.getInstance().getHealth() - 1;
+                int newHealth = GameScene.getInstance().getHealth() - this.damage;
                 healthText.setHealthText(newHealth);
                 GameScene.getInstance().setHealth(newHealth);
-                goblin.remove();
+                enemy.remove();
             }
         }
     }

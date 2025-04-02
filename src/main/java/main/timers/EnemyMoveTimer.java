@@ -1,12 +1,13 @@
-package main.entities.enemies;
+package main.timers;
 
 import com.github.hanyaeger.api.Timer;
+import main.entities.enemies.Enemy;
 
 public class EnemyMoveTimer extends Timer {
 
-    private IEnemy enemy;
+    private final Enemy enemy;
 
-    public EnemyMoveTimer(IEnemy enemy, int interval) {
+    public EnemyMoveTimer(Enemy enemy, int interval) {
         super(interval);
         this.enemy = enemy;
     }

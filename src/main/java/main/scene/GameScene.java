@@ -5,14 +5,13 @@ import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.YaegerEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
-import main.entities.enemies.EnemySpawnTimer;
-import main.entities.enemies.IEnemy;
+import main.entities.enemies.Enemy;
 import main.entities.enemies.fastGoblin.FastGoblin;
 import main.entities.enemies.regularGoblin.RegularGoblin;
 import main.entities.enemies.slowGoblin.SlowGoblin;
-import main.entities.hotbar.towerSelectHotbar.TowerSelectHotbar;
 import main.entities.map.GameTileMap;
 import main.entities.text.HealthText;
+import main.timers.EnemySpawnTimer;
 
 import java.util.ArrayList;
 
@@ -79,15 +78,13 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
     @Override
     public void setupTimers() {
         Coordinate2D spawnTile = findSpawnTile();
-        ArrayList<IEnemy> enemies = new ArrayList<>();
+        ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(new FastGoblin(spawnTile, healthText));
         enemies.add(new FastGoblin(spawnTile, healthText));
-        enemies.add(new RegularGoblin(spawnTile));
-        enemies.add(new RegularGoblin(spawnTile));
-        enemies.add(new SlowGoblin(spawnTile));
-        enemies.add(new RegularGoblin(spawnTile));
+        enemies.add(new RegularGoblin(spawnTile, healthText));
+        enemies.add(new RegularGoblin(spawnTile, healthText));
+        enemies.add(new SlowGoblin(spawnTile, healthText));
+        enemies.add(new RegularGoblin(spawnTile, healthText));
         addTimer(new EnemySpawnTimer(2000, enemies));
     }
-
-
 }
