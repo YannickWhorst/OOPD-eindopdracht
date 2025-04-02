@@ -1,11 +1,7 @@
 package main.entities.map;
 
-import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.TileMap;
-import main.entities.map.tiles.ShowerTowerTile;
 import main.entities.map.tiles.TileType;
-import main.scene.GameScene;
 
 public class GameTileMap extends TileMap {
     private static GameTileMap instance;
@@ -41,7 +37,7 @@ public class GameTileMap extends TileMap {
                 {2, 1, 3, 1, 2, 8, 1, 9, 1, 8, 3, 1, 2, 3, 1, 8, 2, 3, 1, 2},
                 {3, 2, 1, 2, 3, 8, 1, 2, 3, 8, 1, 2, 3, 1, 2, 8, 3, 1, 2, 3},
                 {1, 3, 2, 3, 1, 8, 1, 2, 3, 8, 9, 1, 2, 3, 9, 8, 1, 2, 3, 1},
-                {2, 1, 3, 1, 9, 8, 1, 2, 3, 8, 8, 8, 8, 1, 2, 8, 3, 1, 2, 3},
+                {2, 1, 3, 1, 10, 8, 1, 2, 3, 8, 8, 8, 8, 1, 2, 8, 3, 1, 2, 3},
                 {99, 8, 8, 8, 8, 8, 1, 3, 1, 2, 3, 1, 8, 2, 1, 8, 2, 3, 1, 2},
                 {1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 8, 2, 3, 8, 2, 1, 2, 3},
                 {1, 3, 2, 3, 1, 2, 1, 2, 3, 1, 3, 2, 8, 8, 8, 8, 2, 3, 1, 2},
@@ -61,18 +57,14 @@ public class GameTileMap extends TileMap {
     }
 
     public void placeTower(int x, int y, TileType tileType) {
-        if (isValidTile(x, y)) {
-            map[x][y] = tileType.getId();
-
-            // Verwijder de oude tegel en voeg een nieuwe toe
-            GameScene.getInstance().addNewEntity(new ShowerTowerTile(
-                    new Coordinate2D(y * 40, x * 40),
-                    new Size(40, 40),
-                    tileType.getSpritePath()
-            ));
-
-
+        if (!isValidTile(x, y)) {
+            return;
         }
+
+        // TODO: Fix tower placement
+        System.out.println("Before: " + map[x][y]);
+        map[x][y] = tileType.getId();
+        System.out.println("After : " + map[x][y]);
     }
 
     public boolean isValidTile(int x, int y) {

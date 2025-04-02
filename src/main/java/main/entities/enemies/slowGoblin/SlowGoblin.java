@@ -13,7 +13,8 @@ public class SlowGoblin extends Enemy {
 
     @Override
     protected void setupEntities() {
-        Hitbox hitbox = new SlowGoblinHitbox(new Coordinate2D(-10, -10), healthText, this, 3);
+        Hitbox hitbox = new SlowGoblinHitbox
+                (new Coordinate2D(-10, -10), healthText, this, 3, 150);
         addEntity(hitbox);
         var goblinSprite = new SlowGoblinSprite(new Coordinate2D(0, 0));
         addEntity(goblinSprite);

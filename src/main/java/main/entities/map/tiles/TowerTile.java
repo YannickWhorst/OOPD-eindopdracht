@@ -17,7 +17,6 @@ public class TowerTile extends SpriteEntity implements MouseButtonPressedListene
     private final GameTileMap gameTileMap = GameTileMap.getInstance();
     private final int TILE_WIDTH = 40, TILE_HEIGHT = 40;
 
-
     public TowerTile(Coordinate2D initialLocation, Size size, String resource) {
         super(resource, initialLocation, size);
     }

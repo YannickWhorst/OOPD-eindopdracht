@@ -24,10 +24,6 @@ public abstract class Enemy extends DynamicCompositeEntity implements TimerConta
     @Override
     protected abstract void setupEntities();
 
-    public void takeDamage(int damage) {
-
-    }
-
     public void moveEnemy() {
         int tileSize = 40;
         int x = (int) getAnchorLocation().getX() / tileSize;

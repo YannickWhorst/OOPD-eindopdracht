@@ -46,7 +46,7 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
         addEntity(healthText);
 
         currencyText.setCurrencyText(200);
-        addNewEntity(currencyText);
+        addEntity(currencyText);
     }
 
     @Override

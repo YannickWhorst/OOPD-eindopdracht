@@ -13,7 +13,8 @@ public class RegularGoblin extends Enemy {
 
     @Override
     protected void setupEntities() {
-        Hitbox goblinHitbox = new RegularGoblinHitbox(new Coordinate2D(-10, -10), healthText, this, 2);
+        Hitbox goblinHitbox = new RegularGoblinHitbox
+                (new Coordinate2D(-10, -10), healthText, this, 2, 100);
         addEntity(goblinHitbox);
         var goblinSprite = new RegularGoblinSprite(new Coordinate2D(0, 0));
         addEntity(goblinSprite);

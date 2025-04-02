@@ -5,8 +5,9 @@ import main.entities.enemies.Hitbox;
 import main.entities.text.HealthText;
 
 public class RegularGoblinHitbox extends Hitbox {
-    protected RegularGoblinHitbox(Coordinate2D initialLocation, HealthText healthText, RegularGoblin regularGoblin, int damage) {
-        super(initialLocation, healthText, regularGoblin, damage);
+    protected RegularGoblinHitbox
+            (Coordinate2D initialLocation, HealthText healthText, RegularGoblin regularGoblin, int damage, int health) {
+        super(initialLocation, healthText, regularGoblin, damage, health);
     }
 
 }
