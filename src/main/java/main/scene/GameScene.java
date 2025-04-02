@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.YaegerEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
+import main.TowerShower;
 import main.entities.enemies.Enemy;
 import main.entities.enemies.fastGoblin.FastGoblin;
 import main.entities.enemies.regularGoblin.RegularGoblin;
@@ -86,5 +87,17 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
         enemies.add(new SlowGoblin(spawnTile, healthText));
         enemies.add(new RegularGoblin(spawnTile, healthText));
         addTimer(new EnemySpawnTimer(2000, enemies));
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        if (health <= 0) {
+            TowerShower.setScene(3);
+        }
+
+        this.health = health;
     }
 }
