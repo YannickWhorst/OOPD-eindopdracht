@@ -11,6 +11,7 @@ import main.entities.enemies.fastGoblin.FastGoblin;
 import main.entities.enemies.regularGoblin.RegularGoblin;
 import main.entities.enemies.slowGoblin.SlowGoblin;
 import main.entities.map.GameTileMap;
+import main.entities.text.CurrencyText;
 import main.entities.text.HealthText;
 import main.timers.EnemySpawnTimer;
 
@@ -18,7 +19,9 @@ import java.util.ArrayList;
 
 public class GameScene extends DynamicScene implements TileMapContainer, TimerContainer {
     private int health = 10;
+    private int currency = 200;
     public HealthText healthText = new HealthText(new Coordinate2D(0, 0));
+    public CurrencyText currencyText = new CurrencyText(new Coordinate2D(0, healthText.getHeight() + 40));
 
     private static GameScene instance;
 
@@ -42,20 +45,13 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
         healthText.setHealthText(10);
         addEntity(healthText);
 
-//        addEntity(new TowerSelectHotbar(new Coordinate2D(getWidth() / 2, getHeight() - 50)));
+        currencyText.setCurrencyText(200);
+        addNewEntity(currencyText);
     }
 
     @Override
     public void setupTileMaps() {
         addTileMap(GameTileMap.getInstance());
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
     }
 
     private Coordinate2D findSpawnTile() {
@@ -100,4 +96,13 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
 
         this.health = health;
     }
+
+    public int getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(int currency) {
+        this.currency = currency;
+    }
+
 }
