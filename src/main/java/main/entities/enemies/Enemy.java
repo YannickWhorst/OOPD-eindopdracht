@@ -12,6 +12,7 @@ public abstract class Enemy extends DynamicCompositeEntity implements TimerConta
     protected Coordinate2D previousLocation;
     protected final int PATH_TILE = TileType.PATH.getId();
     protected final int END_TILE = TileType.END.getId();
+    protected final int PASSED_TOWER_TILE = TileType.PASSED_TOWER.getId();
     protected final HealthText healthText;
     protected final int interval;
 
@@ -42,15 +43,15 @@ public abstract class Enemy extends DynamicCompositeEntity implements TimerConta
             int newY = y + dir[1];
 
             if (newY >= 0 && newY < map.length && newX >= 0 && newX < map[0].length &&
-                    (map[newY][newX] == PATH_TILE || map[newY][newX] == END_TILE)) {
-                Coordinate2D candidate = new Coordinate2D(newX * tileSize, newY * tileSize);
+                    (map[newY][newX] == PATH_TILE || map[newY][newX] == END_TILE || map[newY][newX] == PASSED_TOWER_TILE)) {
+                Coordinate2D location = new Coordinate2D(newX * tileSize, newY * tileSize);
 
-                if (candidate.equals(previousLocation)) {
+                if (location.equals(previousLocation)) {
                     continue;
                 }
 
                 previousLocation = getAnchorLocation();
-                setAnchorLocation(candidate);
+                setAnchorLocation(location);
                 return;
             }
         }

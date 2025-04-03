@@ -10,7 +10,7 @@ public abstract class Tower extends DynamicSpriteEntity implements Collider {
 
     public Tower(Coordinate2D initialLocation, Size size, String resource/*, int damage*/) {
         super(resource, initialLocation, size);
-        this.damage = 100;
+        this.damage = 15;
     }
 
     public int getDamage() {

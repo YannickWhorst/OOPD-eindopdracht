@@ -9,6 +9,7 @@ public enum TileType {
     GRASS_VARIATION_2(2, GrassTile.class, "sprites/tiles/grassTile_variation_2.jpg"),
     FLOWER(3, GrassTile.class, "sprites/tiles/flowerTile.jpg"),
     PATH(8, GrassTile.class, "sprites/tiles/pathTile.jpg"),
+    PASSED_TOWER(97, PassedTowerTile.class, "sprites/tiles/pathTile.jpg"),
     END(98, EndTile.class, "sprites/tiles/endTile.jpg"),
     SPAWN(99, GrassTile.class, "sprites/tiles/spawnTile.jpg"),
     TOWER_TILE(9, TowerTile.class, "sprites/tiles/towerTile.jpg"),

@@ -15,7 +15,6 @@ import main.scene.GameScene;
 public class TowerTile extends SpriteEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
     private static int tileX, tileY;
     private final GameTileMap gameTileMap = GameTileMap.getInstance();
-    private final int TILE_WIDTH = 40, TILE_HEIGHT = 40;
 
     public TowerTile(Coordinate2D initialLocation, Size size, String resource) {
         super(resource, initialLocation, size);
@@ -24,11 +23,10 @@ public class TowerTile extends SpriteEntity implements MouseButtonPressedListene
     @Override
     public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) {
         getLatestTileLocation(coordinate2D);
-        // Bijvoorbeeld wanneer een speler op een knop drukt of een bepaalde actie uitvoert
+
         TowerSelectHotbar hotbar = new TowerSelectHotbar(new Coordinate2D(250, 700), tileX, tileY);
+
         GameScene.getInstance().addNewEntity(hotbar);
-
-
     }
 
     @Override
@@ -42,7 +40,9 @@ public class TowerTile extends SpriteEntity implements MouseButtonPressedListene
     }
 
     private void getLatestTileLocation(Coordinate2D coordinate2D) {
+        int TILE_WIDTH = 40;
         int tileX = (int) (coordinate2D.getY() / TILE_WIDTH);
+        int TILE_HEIGHT = 40;
         int tileY = (int) (coordinate2D.getX() / TILE_HEIGHT);
 
         if (gameTileMap.isValidTile(tileX, tileY)) {

@@ -6,17 +6,22 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.RectangleEntity;
 import javafx.scene.paint.Color;
 import main.entities.map.tiles.EndTile;
+import main.entities.map.tiles.PassedTowerTile;
 import main.entities.text.HealthText;
 import main.entities.map.towers.Tower;
 import main.scene.GameScene;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public abstract class Hitbox extends RectangleEntity implements Collided {
     private final HealthText healthText;
     private final Enemy enemy;
     private final int damage;
     private int health;
+    private Timer damageTimer;
+    private boolean isCollidingWithTower = false;
 
     protected Hitbox(Coordinate2D initialLocation, HealthText healthText, Enemy enemy, int damage, int health) {
         super(initialLocation);
@@ -31,25 +36,63 @@ public abstract class Hitbox extends RectangleEntity implements Collided {
 
     @Override
     public void onCollision(List<Collider> collidingObjects) {
+        boolean isCollidingWithTower = false;
+
         for (Collider collider : collidingObjects) {
             switch (collider) {
-                case EndTile endTile -> {
+                case EndTile ignored -> {
                     int newHealth = GameScene.getInstance().getHealth() - this.damage;
                     healthText.setHealthText(newHealth);
                     GameScene.getInstance().setHealth(newHealth);
                     enemy.remove();
                 }
                 case Tower tower -> {
-                    int newHealth = this.health - tower.getDamage();
-                    this.health = newHealth;
-
-                    if (newHealth <= 0) {
-                        enemy.remove();
+                    isCollidingWithTower = true;
+                    if (!this.isCollidingWithTower) {
+                        startDamageTimer(tower);
                     }
                 }
+                case PassedTowerTile ignored -> stopDamageTimer();
                 case null, default -> {
                 }
             }
+        }
+
+        this.isCollidingWithTower = isCollidingWithTower;
+    }
+
+    private void startDamageTimer(Tower tower) {
+        if (damageTimer != null) {
+            stopDamageTimer();
+        }
+
+        damageTimer = new Timer();
+        damageTimer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                if (isCollidingWithTower) {
+                    takeDamage(tower);
+                } else {
+                    stopDamageTimer();
+                }
+            }
+        }, 0, 1000);
+    }
+
+    public void takeDamage(Tower tower) {
+        int newHealth = this.health - tower.getDamage();
+        this.health = newHealth;
+
+        if (newHealth <= 0) {
+            stopDamageTimer();
+            enemy.remove();
+        }
+    }
+
+    private void stopDamageTimer() {
+        if (damageTimer != null) {
+            damageTimer.cancel();
+            damageTimer = null;
         }
     }
 }

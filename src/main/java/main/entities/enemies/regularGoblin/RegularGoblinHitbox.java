@@ -9,5 +9,4 @@ public class RegularGoblinHitbox extends Hitbox {
             (Coordinate2D initialLocation, HealthText healthText, RegularGoblin regularGoblin, int damage, int health) {
         super(initialLocation, healthText, regularGoblin, damage, health);
     }
-
 }
