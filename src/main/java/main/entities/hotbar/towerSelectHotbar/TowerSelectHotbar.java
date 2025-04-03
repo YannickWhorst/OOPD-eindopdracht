@@ -25,8 +25,16 @@ public class TowerSelectHotbar extends CompositeEntity {
         HotbarButton bathtubTowerButton =
                 new BathtubTowerButton(new Coordinate2D(60, 0), tileX, tileY, this);
 
+        HotbarButton PowerwashTowerButton =
+                new PowerwashTowerButton(new Coordinate2D(120, 0), tileX, tileY, this);
+
+        HotbarButton SoapTowerButton =
+                new SoapTowerButton(new Coordinate2D(180, 0), tileX, tileY, this);
+
         addEntity(hotbarBackground);
         addEntity(showerTowerButton);
         addEntity(bathtubTowerButton);
+        addEntity(PowerwashTowerButton);
+        addEntity(SoapTowerButton);
     }
 }

@@ -8,6 +8,8 @@ import main.entities.map.tiles.TileType;
 import main.entities.map.tiles.TowerTile;
 import main.entities.map.towers.BadkuipTower;
 import main.entities.map.towers.DouchekopTower;
+import main.entities.map.towers.PowerwashTower;
+import main.entities.map.towers.SoapTower;
 import main.scene.GameScene;
 
 public class GameTileMap extends TileMap {
@@ -84,6 +86,8 @@ public class GameTileMap extends TileMap {
         return switch (tileType) {
             case SHOWER_TOWER -> new DouchekopTower(position, size, spritePath);
             case BATHTUB_TOWER -> new BadkuipTower(position, size, spritePath);
+            case POWERWASH_TOWER -> new PowerwashTower(position, size, spritePath);
+            case SOAP_TOWER -> new SoapTower(position, size, spritePath);
             default -> new TowerTile(position, size, spritePath);
         };
     }
