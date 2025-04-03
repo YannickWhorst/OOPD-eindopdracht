@@ -20,12 +20,14 @@ import java.util.ArrayList;
 public class GameScene extends DynamicScene implements TileMapContainer, TimerContainer {
     private int health = 10;
     private int currency = 200;
+    private final GameTileMap tileMap;
     public HealthText healthText = new HealthText(new Coordinate2D(0, 0));
     public CurrencyText currencyText = new CurrencyText(new Coordinate2D(0, healthText.getHeight() + 40));
 
     private static GameScene instance;
 
     private GameScene() {
+        tileMap = GameTileMap.getInstance();
     }
 
     public static GameScene getInstance() {
@@ -51,11 +53,11 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
 
     @Override
     public void setupTileMaps() {
-        addTileMap(GameTileMap.getInstance());
+        addTileMap(tileMap);
     }
 
     private Coordinate2D findSpawnTile() {
-        int[][] map = GameTileMap.getInstance().defineMap();
+        int[][] map = tileMap.defineMap();
 
         for (int y = 0; y < map.length; y++) {
             for (int x = 0; x < map[y].length; x++) {
