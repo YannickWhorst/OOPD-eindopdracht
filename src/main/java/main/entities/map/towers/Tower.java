@@ -8,9 +8,9 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 public abstract class Tower extends DynamicSpriteEntity implements Collider {
     private final int damage;
 
-    public Tower(Coordinate2D initialLocation, Size size, String resource/*, int damage*/) {
+    public Tower(Coordinate2D initialLocation, Size size, String resource, int damage) {
         super(resource, initialLocation, size);
-        this.damage = 15;
+        this.damage = damage;
     }
 
     public int getDamage() {
