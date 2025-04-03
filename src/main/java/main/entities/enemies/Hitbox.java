@@ -7,7 +7,7 @@ import com.github.hanyaeger.api.entities.impl.RectangleEntity;
 import javafx.scene.paint.Color;
 import main.entities.map.tiles.EndTile;
 import main.entities.text.HealthText;
-import main.entities.towers.Tower;
+import main.entities.map.towers.Tower;
 import main.scene.GameScene;
 
 import java.util.List;

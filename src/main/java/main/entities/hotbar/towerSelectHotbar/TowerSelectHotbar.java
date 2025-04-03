@@ -3,8 +3,6 @@ package main.entities.hotbar.towerSelectHotbar;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.CompositeEntity;
-import com.github.hanyaeger.api.entities.impl.RectangleEntity;
-import main.scene.GameScene;
 
 public class TowerSelectHotbar extends CompositeEntity {
     private final int tileX;
@@ -16,9 +14,16 @@ public class TowerSelectHotbar extends CompositeEntity {
         this.tileY = tileY;
     }
 
-    @Override
     protected void setupEntities() {
-        addEntity(new HotbarBackground(new Coordinate2D(150, 25), new Size(400, 70)));
-        addEntity(new ShowerTowerButton(new Coordinate2D(0, 0), tileX, tileY, this));
+        HotbarBackground hotbarBackground =
+                new HotbarBackground(new Coordinate2D(150, 25), new Size(400, 70));
+        ShowerTowerButton showerTowerButton =
+                new ShowerTowerButton(new Coordinate2D(0, 0), tileX, tileY, this);
+        BathtubTowerButton bathtubTowerButton =
+                new BathtubTowerButton(new Coordinate2D(60, 0), tileX, tileY, this);
+
+        addEntity(hotbarBackground);
+        addEntity(showerTowerButton);
+        addEntity(bathtubTowerButton);
     }
 }

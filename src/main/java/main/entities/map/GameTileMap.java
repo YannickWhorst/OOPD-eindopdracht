@@ -6,8 +6,8 @@ import com.github.hanyaeger.api.entities.YaegerEntity;
 import com.github.hanyaeger.api.scenes.TileMap;
 import main.entities.map.tiles.TileType;
 import main.entities.map.tiles.TowerTile;
-import main.entities.towers.BadkuipTower;
-import main.entities.towers.DouchekopTower;
+import main.entities.map.towers.BadkuipTower;
+import main.entities.map.towers.DouchekopTower;
 import main.scene.GameScene;
 
 public class GameTileMap extends TileMap {

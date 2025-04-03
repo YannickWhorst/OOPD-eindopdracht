@@ -1,8 +1,8 @@
 package main.entities.map.tiles;
 
 import com.github.hanyaeger.api.entities.YaegerEntity;
-import main.entities.towers.BadkuipTower;
-import main.entities.towers.DouchekopTower;
+import main.entities.map.towers.BadkuipTower;
+import main.entities.map.towers.DouchekopTower;
 
 public enum TileType {
     GRASS_VARIATION_1(1, GrassTile.class, "sprites/tiles/grassTile_variation_1.jpg"),

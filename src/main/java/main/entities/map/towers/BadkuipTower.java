@@ -1,4 +1,4 @@
-package main.entities.towers;
+package main.entities.map.towers;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
