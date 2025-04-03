@@ -7,7 +7,7 @@ import main.entities.map.tiles.TileType;
 public class BathtubTowerButton extends HotbarButton {
 
     public BathtubTowerButton(Coordinate2D initialLocation, int tileX, int tileY, TowerSelectHotbar towerSelectHotbar) {
-        super(initialLocation, tileX, tileY, TileType.SHOWER_TOWER, "sprites/towers/bathtubTower.png", towerSelectHotbar);
+        super(initialLocation, tileX, tileY, TileType.SHOWER_TOWER, "sprites/towers/bathtubTower.png", towerSelectHotbar, 2);
     }
 }
 
