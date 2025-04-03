@@ -3,6 +3,8 @@ package main.entities.map.tiles;
 import com.github.hanyaeger.api.entities.YaegerEntity;
 import main.entities.map.towers.BadkuipTower;
 import main.entities.map.towers.DouchekopTower;
+import main.entities.map.towers.PowerwashTower;
+import main.entities.map.towers.SoapTower;
 
 public enum TileType {
     GRASS_VARIATION_1(1, GrassTile.class, "sprites/tiles/grassTile_variation_1.jpg"),
@@ -14,7 +16,9 @@ public enum TileType {
     SPAWN(99, GrassTile.class, "sprites/tiles/spawnTile.jpg"),
     TOWER_TILE(9, TowerTile.class, "sprites/tiles/towerTile.jpg"),
     SHOWER_TOWER(10, DouchekopTower.class, "sprites/towers/showerTower.png"),
-    BATHTUB_TOWER(11, BadkuipTower.class, "sprites/towers/bathtubTower.png");
+    BATHTUB_TOWER(11, BadkuipTower.class, "sprites/towers/bathtubTower.png"),
+    POWERWASH_TOWER(11, PowerwashTower.class, "sprites/towers/powerwashTower.png"),
+    SOAP_TOWER(11, SoapTower.class, "sprites/towers/soapTower.png");
 
     private final int id;
     private final Class<? extends YaegerEntity> entityClass;
