@@ -57,6 +57,5 @@ public class HotbarButton extends SpriteEntity implements MouseButtonPressedList
     private void placeTower() {
         gameTileMapInstance.placeTower(this.tileX, this.tileY, tileType);
         towerSelectHotbar.remove();
-        System.out.println("placed: " + tileType);
     }
 }
