@@ -30,6 +30,8 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
         tileMap = GameTileMap.getInstance();
     }
 
+    // TODO: getInstance() weg halen zodat we geen static variablen meer hebben,
+    // tenzij het niet anders kan
     public static GameScene getInstance() {
         if (instance == null) {
             instance = new GameScene();
