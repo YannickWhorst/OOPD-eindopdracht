@@ -139,7 +139,7 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
     public void goToWinScene() {
         scoreManager.saveScore("speler");
 
-        setScene(4); // Of het juiste ID van je WinScene
+        setScene(4); // WinScene
     }
 
     public void setCurrency(int currency) {
