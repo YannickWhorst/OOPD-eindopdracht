@@ -7,7 +7,6 @@ import main.entities.text.CurrencyText;
 import main.entities.text.HealthText;
 
 public class SlowGoblin extends Enemy {
-
     public SlowGoblin(Coordinate2D initialLocation, HealthText healthText, CurrencyText currencyText) {
         super(initialLocation, healthText, currencyText, 1500);
     }

@@ -17,6 +17,7 @@ public class RegularGoblin extends Enemy {
         Hitbox goblinHitbox = new RegularGoblinHitbox
                 (new Coordinate2D(-10, -10), healthText, currencyText, this, 2, 100);
         addEntity(goblinHitbox);
+
         var goblinSprite = new RegularGoblinSprite(new Coordinate2D(0, 0));
         addEntity(goblinSprite);
     }

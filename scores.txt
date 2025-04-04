@@ -10,3 +10,5 @@ SuperGoedeSpeler,650
 Speler,-250
 speler,-300
 Speler,-300
+speler,600
+Speler,600

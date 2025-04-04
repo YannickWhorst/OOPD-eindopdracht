@@ -1,7 +1,8 @@
 package main.logic;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ScoreManager {
     private int currentScore = 0;
@@ -9,10 +10,6 @@ public class ScoreManager {
 
     public void addScore(int points) {
         currentScore += points;
-    }
-
-    public int getCurrentScore() {
-        return currentScore;
     }
 
     public void resetScore() {

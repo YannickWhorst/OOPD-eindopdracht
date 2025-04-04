@@ -1,8 +1,8 @@
 package main.scene;
 
-import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
+import com.github.hanyaeger.api.scenes.StaticScene;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -11,7 +11,7 @@ import main.logic.ScoreManager;
 
 import java.util.List;
 
-public class LeaderboardScene extends DynamicScene {
+public class LeaderboardScene extends StaticScene {
 
     private final ScoreManager scoreManager;
 

@@ -13,7 +13,6 @@ import main.entities.buttons.menuButtons.QuitButton;
 import main.logic.ScoreManager;
 
 public abstract class GameEndScene extends StaticScene {
-
     private final String resource;
     private final String text;
     private final ScoreManager scoreManager;
@@ -44,7 +43,6 @@ public abstract class GameEndScene extends StaticScene {
         text.setFont(Font.font("Roboto", FontWeight.BOLD, 80));
         addEntity(text);
 
-        // Knoppen
         addEntity(new LeaderboardButton(new Coordinate2D(getWidth() / 2, 250)));
         addEntity(new HomeButton(new Coordinate2D(getWidth() / 2, 300)));
         addEntity(new QuitButton(new Coordinate2D(getWidth() / 2, 350), Color.RED, "Afsluiten"));

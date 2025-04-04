@@ -7,7 +7,6 @@ import main.scene.GameScene;
 import java.util.ArrayList;
 
 public class EnemySpawnTimer extends Timer {
-
     private final ArrayList<Enemy> enemies;
     private int currentIndex = 0;
 

@@ -9,7 +9,6 @@ public class TowerSelectHotbar extends CompositeEntity {
     private final int tileX;
     private final int tileY;
 
-    // TODO: Keep track of the opened hotbar and not open it when its already opened
     public TowerSelectHotbar(Coordinate2D initialLocation, int tileX, int tileY) {
         super(initialLocation);
         this.tileX = tileX;

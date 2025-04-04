@@ -10,7 +10,6 @@ import javafx.scene.Cursor;
 
 public abstract class Tower extends DynamicSpriteEntity implements Collider, MouseEnterListener, MouseExitListener {
     private final int damage;
-    private boolean isHovered = false;
 
     public Tower(Coordinate2D initialLocation, Size size, String resource, int damage) {
         super(resource, initialLocation, size);
@@ -23,13 +22,11 @@ public abstract class Tower extends DynamicSpriteEntity implements Collider, Mou
 
     @Override
     public void onMouseEntered() {
-        isHovered = true;
         setCursor(Cursor.HAND);
     }
 
     @Override
     public void onMouseExited() {
-        isHovered = false;
         setCursor(Cursor.DEFAULT);
     }
 }

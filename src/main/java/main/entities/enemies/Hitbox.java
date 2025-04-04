@@ -8,9 +8,9 @@ import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import main.entities.map.tiles.EndTile;
 import main.entities.map.tiles.PassedTowerTile;
+import main.entities.map.towers.Tower;
 import main.entities.text.CurrencyText;
 import main.entities.text.HealthText;
-import main.entities.map.towers.Tower;
 import main.scene.GameScene;
 
 import java.util.List;
@@ -94,12 +94,9 @@ public abstract class Hitbox extends RectangleEntity implements Collided {
             stopDamageTimer();
             enemy.remove();
             GameScene.getInstance().enemyKilled();
-            System.out.println("" + GameScene.getInstance().getEnemyCount());
-            // Controleer of er nog vijanden over zijn
+
             if (GameScene.getInstance().getEnemyCount() == 0) {
                 Platform.runLater(() -> GameScene.getInstance().goToWinScene());
-
-//                GameScene.getInstance().goToWinScene();
             }
         }
     }

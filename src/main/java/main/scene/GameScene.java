@@ -6,7 +6,6 @@ import com.github.hanyaeger.api.entities.YaegerEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import javafx.application.Platform;
-import main.TowerShower;
 import main.entities.enemies.Enemy;
 import main.entities.enemies.fastGoblin.FastGoblin;
 import main.entities.enemies.regularGoblin.RegularGoblin;
@@ -27,7 +26,7 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
     private final GameTileMap tileMap;
     public HealthText healthText = new HealthText(new Coordinate2D(0, 0));
     public CurrencyText currencyText = new CurrencyText(new Coordinate2D(0, healthText.getHeight() + 40));
-    private ScoreManager scoreManager = new ScoreManager();
+    private final ScoreManager scoreManager = new ScoreManager();
     private int enemyCount = 0;
 
     private static GameScene instance;
@@ -36,8 +35,6 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
         tileMap = GameTileMap.getInstance();
     }
 
-    // TODO: getInstance() weg halen zodat we geen static variablen meer hebben,
-    // tenzij het niet anders kan
     public static GameScene getInstance() {
         if (instance == null) {
             instance = new GameScene();
@@ -124,8 +121,6 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
 
         if (getEnemyCount() == 0) {
             Platform.runLater(this::goToWinScene);
-
-//                goToWinScene();
         }
     }
 

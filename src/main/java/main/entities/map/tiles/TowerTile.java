@@ -51,16 +51,8 @@ public class TowerTile extends SpriteEntity implements MouseButtonPressedListene
         }
     }
 
-    public static int getTileX() {
-        return tileX;
-    }
-
     public static void setTileX(int tileX) {
         TowerTile.tileX = tileX;
-    }
-
-    public static int getTileY() {
-        return tileY;
     }
 
     public static void setTileY(int tileY) {

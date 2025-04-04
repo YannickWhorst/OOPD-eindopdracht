@@ -13,9 +13,10 @@ import javafx.scene.input.MouseButton;
 import main.entities.hotbar.towerSelectHotbar.TowerSelectHotbar;
 import main.entities.map.GameTileMap;
 import main.entities.map.tiles.TileType;
+
 import java.util.Set;
 
-public class HotbarButton extends SpriteEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener, KeyListener {
+public abstract class HotbarButton extends SpriteEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener, KeyListener {
     private final int tileX, tileY;
     private final GameTileMap gameTileMapInstance = GameTileMap.getInstance();
     private final TileType tileType;
@@ -48,7 +49,6 @@ public class HotbarButton extends SpriteEntity implements MouseButtonPressedList
 
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
-        // Check of het nummer overeenkomt met de hotbar index (1 = DIGIT1, 2 = DIGIT2, etc.)
         if (pressedKeys.contains(KeyCode.getKeyCode(Integer.toString(hotbarIndex)))) {
             placeTower();
         }

@@ -7,7 +7,6 @@ import main.scene.*;
 public class TowerShower extends YaegerGame {
     private static TowerShower instance;
 
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -39,6 +38,5 @@ public class TowerShower extends YaegerGame {
         addScene(2, new LeaderboardScene(GameScene.getInstance().getScoreManager()));
         addScene(3, new GameOverScene());
         addScene(4, new WinScene());
-
     }
 }
