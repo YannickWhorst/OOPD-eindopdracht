@@ -18,8 +18,7 @@ import java.util.List;
 public class GameTileMap extends TileMap {
     private static GameTileMap instance;
     private int[][] map;
-    private List<YaegerEntity> placedTowers = new ArrayList<>();  // List to track placed towers
-
+    private final List<YaegerEntity> placedTowers = new ArrayList<>();  // List to track placed towers
 
     private GameTileMap() {
     }
@@ -76,6 +75,13 @@ public class GameTileMap extends TileMap {
             return;
         }
 
+        if (GameScene.getInstance().getCurrency() < tileType.getTowerCost()) {
+            return;
+        }
+
+        int newCurrency = GameScene.getInstance().getCurrency() - tileType.getTowerCost();
+        GameScene.getInstance().setCurrency(newCurrency);
+        GameScene.getInstance().currencyText.setCurrencyText(newCurrency);
         map[x][y] = tileType.getId();
         YaegerEntity tower = createTower(tileType, x, y);
         placedTowers.add(tower);

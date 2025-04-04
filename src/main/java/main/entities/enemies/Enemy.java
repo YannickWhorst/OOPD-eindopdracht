@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import main.entities.map.GameTileMap;
 import main.entities.map.tiles.TileType;
+import main.entities.text.CurrencyText;
 import main.entities.text.HealthText;
 import main.timers.EnemyMoveTimer;
 
@@ -14,11 +15,13 @@ public abstract class Enemy extends DynamicCompositeEntity implements TimerConta
     protected final int END_TILE = TileType.END.getId();
     protected final int PASSED_TOWER_TILE = TileType.PASSED_TOWER.getId();
     protected final HealthText healthText;
+    protected final CurrencyText currencyText;
     protected final int interval;
 
-    protected Enemy(Coordinate2D initialLocation, HealthText healthText, int interval) {
+    protected Enemy(Coordinate2D initialLocation, HealthText healthText, CurrencyText currencyText, int interval) {
         super(initialLocation);
         this.healthText = healthText;
+        this.currencyText = currencyText;
         this.interval = interval;
     }
 

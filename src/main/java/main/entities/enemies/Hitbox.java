@@ -7,6 +7,7 @@ import com.github.hanyaeger.api.entities.impl.RectangleEntity;
 import javafx.scene.paint.Color;
 import main.entities.map.tiles.EndTile;
 import main.entities.map.tiles.PassedTowerTile;
+import main.entities.text.CurrencyText;
 import main.entities.text.HealthText;
 import main.entities.map.towers.Tower;
 import main.scene.GameScene;
@@ -17,15 +18,17 @@ import java.util.TimerTask;
 
 public abstract class Hitbox extends RectangleEntity implements Collided {
     private final HealthText healthText;
+    private final CurrencyText currencyText;
     private final Enemy enemy;
     private final int damage;
     private int health;
     private Timer damageTimer;
     private boolean isCollidingWithTower = false;
 
-    protected Hitbox(Coordinate2D initialLocation, HealthText healthText, Enemy enemy, int damage, int health) {
+    protected Hitbox(Coordinate2D initialLocation, HealthText healthText, CurrencyText currencyText, Enemy enemy, int damage, int health) {
         super(initialLocation);
         this.healthText = healthText;
+        this.currencyText = currencyText;
         this.enemy = enemy;
         this.damage = damage;
         this.health = health;
@@ -84,6 +87,9 @@ public abstract class Hitbox extends RectangleEntity implements Collided {
         this.health = newHealth;
 
         if (newHealth <= 0) {
+            int newCurrency = GameScene.getInstance().getCurrency() + 50;
+            this.currencyText.setCurrencyText(newCurrency);
+            GameScene.getInstance().setCurrency(newCurrency);
             stopDamageTimer();
             enemy.remove();
         }

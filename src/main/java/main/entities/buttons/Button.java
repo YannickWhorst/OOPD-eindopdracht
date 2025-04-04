@@ -13,7 +13,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import main.TowerShower;
 
-public class Button extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
+public abstract class Button extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
     private int scene = 0;
     private final Color color;
 

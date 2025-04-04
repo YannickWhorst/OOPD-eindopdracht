@@ -23,7 +23,6 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
     private final GameTileMap tileMap;
     public HealthText healthText = new HealthText(new Coordinate2D(0, 0));
     public CurrencyText currencyText = new CurrencyText(new Coordinate2D(0, healthText.getHeight() + 40));
-
     private static GameScene instance;
 
     private GameScene() {
@@ -80,12 +79,12 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
     public void setupTimers() {
         Coordinate2D spawnTile = findSpawnTile();
         ArrayList<Enemy> enemies = new ArrayList<>();
-        enemies.add(new FastGoblin(spawnTile, healthText));
-        enemies.add(new FastGoblin(spawnTile, healthText));
-        enemies.add(new RegularGoblin(spawnTile, healthText));
-        enemies.add(new RegularGoblin(spawnTile, healthText));
-        enemies.add(new SlowGoblin(spawnTile, healthText));
-        enemies.add(new RegularGoblin(spawnTile, healthText));
+        enemies.add(new FastGoblin(spawnTile, healthText, currencyText));
+        enemies.add(new FastGoblin(spawnTile, healthText, currencyText));
+        enemies.add(new RegularGoblin(spawnTile, healthText, currencyText));
+        enemies.add(new RegularGoblin(spawnTile, healthText, currencyText));
+        enemies.add(new SlowGoblin(spawnTile, healthText, currencyText));
+        enemies.add(new RegularGoblin(spawnTile, healthText, currencyText));
         addTimer(new EnemySpawnTimer(2000, enemies));
     }
 
