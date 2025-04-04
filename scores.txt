@@ -7,3 +7,6 @@ speler3,200
 speler3,300
 Speler,500
 SuperGoedeSpeler,650
+Speler,-250
+speler,-300
+Speler,-300

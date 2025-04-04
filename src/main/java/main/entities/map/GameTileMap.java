@@ -18,7 +18,7 @@ import java.util.List;
 public class GameTileMap extends TileMap {
     private static GameTileMap instance;
     private int[][] map;
-    private final List<YaegerEntity> placedTowers = new ArrayList<>();  // List to track placed towers
+    private final List<YaegerEntity> placedTowers = new ArrayList<>();
 
     private GameTileMap() {
     }
@@ -107,27 +107,4 @@ public class GameTileMap extends TileMap {
     public boolean isValidTile(int x, int y) {
         return map[x][y] == TileType.TOWER_TILE.getId();
     }
-
-    private void removeTower(int x, int y) {
-        if (isValidTile(x, y)) {
-            YaegerEntity tower = findEntityAt(x, y);
-            if (tower != null) {
-                tower.remove();  // Remove the tower from the scene
-                placedTowers.remove(tower);  // Remove the tower from the tracking list
-                map[x][y] = TileType.TOWER_TILE.getId();  // Reset the tile
-            }
-        }
-    }
-
-    // Helper method to find the tower at the given coordinates (example)
-    private YaegerEntity findEntityAt(int x, int y) {
-        for (YaegerEntity entity : placedTowers) {
-            if (entity.getAnchorLocation().getX() == x && entity.getAnchorLocation().getY() == y) {
-                return entity;  // Return the tower if it matches coordinates
-            }
-        }
-        return null;  // Return null if no entity is found at the coordinates
-    }
-
-
 }
