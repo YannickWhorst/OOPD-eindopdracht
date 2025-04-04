@@ -1,0 +1,9 @@
+Speler1,0
+speler2,600
+Speler2,110
+speler4,400
+speler3,400
+speler3,200
+speler3,300
+Speler,500
+SuperGoedeSpeler,650

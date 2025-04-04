@@ -4,6 +4,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.RectangleEntity;
+import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import main.entities.map.tiles.EndTile;
 import main.entities.map.tiles.PassedTowerTile;
@@ -92,6 +93,14 @@ public abstract class Hitbox extends RectangleEntity implements Collided {
             GameScene.getInstance().setCurrency(newCurrency);
             stopDamageTimer();
             enemy.remove();
+            GameScene.getInstance().enemyKilled();
+            System.out.println("" + GameScene.getInstance().getEnemyCount());
+            // Controleer of er nog vijanden over zijn
+            if (GameScene.getInstance().getEnemyCount() == 0) {
+                Platform.runLater(() -> GameScene.getInstance().goToWinScene());
+
+//                GameScene.getInstance().goToWinScene();
+            }
         }
     }
 

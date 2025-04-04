@@ -36,13 +36,9 @@ public class TowerShower extends YaegerGame {
     public void setupScenes() {
         addScene(0, new TitleScene());
         addScene(1, GameScene.getInstance());
-        addScene(2, new HighScoreScene());
-//        addScene(3, new GameOverScene());
-//        addScene(4, new WinScene());
-
-        // switched GameOver with Win to show the scene
-        addScene(4, new GameOverScene());
-        addScene(3, new WinScene());
+        addScene(2, new LeaderboardScene(GameScene.getInstance().getScoreManager()));
+        addScene(3, new GameOverScene());
+        addScene(4, new WinScene());
 
     }
 }

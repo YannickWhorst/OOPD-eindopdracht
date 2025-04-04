@@ -10,15 +10,19 @@ import javafx.scene.text.FontWeight;
 import main.entities.buttons.menuButtons.HomeButton;
 import main.entities.buttons.menuButtons.LeaderboardButton;
 import main.entities.buttons.menuButtons.QuitButton;
+import main.logic.ScoreManager;
 
 public abstract class GameEndScene extends StaticScene {
 
     private final String resource;
     private final String text;
+    private final ScoreManager scoreManager;
 
-    public GameEndScene(String resource, String text) {
+
+    public GameEndScene(String resource, String text, ScoreManager scoreManager) {
         this.resource = resource;
         this.text = text;
+        this.scoreManager = scoreManager;
     }
 
     @Override
@@ -28,6 +32,8 @@ public abstract class GameEndScene extends StaticScene {
 
     @Override
     public void setupEntities() {
+        scoreManager.saveScore("Speler");
+
         var text = new TextEntity(
                 new Coordinate2D(getWidth() / 2, 100),
                 this.text

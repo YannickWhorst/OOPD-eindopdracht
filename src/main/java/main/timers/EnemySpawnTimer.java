@@ -20,6 +20,7 @@ public class EnemySpawnTimer extends Timer {
     public void onAnimationUpdate(long timestamp) {
         if (currentIndex < enemies.size()) {
             GameScene.getInstance().addNewEntity(enemies.get(currentIndex));
+            GameScene.getInstance().enemySpawned();
             currentIndex++;
         }
     }

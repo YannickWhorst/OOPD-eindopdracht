@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.YaegerEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
+import javafx.application.Platform;
 import main.TowerShower;
 import main.entities.enemies.Enemy;
 import main.entities.enemies.fastGoblin.FastGoblin;
@@ -13,9 +14,12 @@ import main.entities.enemies.slowGoblin.SlowGoblin;
 import main.entities.map.GameTileMap;
 import main.entities.text.CurrencyText;
 import main.entities.text.HealthText;
+import main.logic.ScoreManager;
 import main.timers.EnemySpawnTimer;
 
 import java.util.ArrayList;
+
+import static main.TowerShower.setScene;
 
 public class GameScene extends DynamicScene implements TileMapContainer, TimerContainer {
     private int health = 10;
@@ -23,6 +27,9 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
     private final GameTileMap tileMap;
     public HealthText healthText = new HealthText(new Coordinate2D(0, 0));
     public CurrencyText currencyText = new CurrencyText(new Coordinate2D(0, healthText.getHeight() + 40));
+    private ScoreManager scoreManager = new ScoreManager();
+    private int enemyCount = 0;
+
     private static GameScene instance;
 
     private GameScene() {
@@ -40,7 +47,7 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
 
     @Override
     public void setupScene() {
-
+        scoreManager.resetScore();
     }
 
     @Override
@@ -75,6 +82,10 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
         addEntity(yaegerEntity);
     }
 
+    public void enemySpawned() {
+        enemyCount++;
+    }
+
     @Override
     public void setupTimers() {
         Coordinate2D spawnTile = findSpawnTile();
@@ -94,14 +105,46 @@ public class GameScene extends DynamicScene implements TileMapContainer, TimerCo
 
     public void setHealth(int health) {
         if (health <= 0) {
-            TowerShower.setScene(3);
+            setScene(3);
         }
+
+        enemyAttack();
 
         this.health = health;
     }
 
+    public void enemyKilled() {
+        enemyCount--;
+        scoreManager.addScore(100);
+    }
+
+    public void enemyAttack() {
+        enemyCount--;
+        scoreManager.addScore(-50);
+
+        if (getEnemyCount() == 0) {
+            Platform.runLater(this::goToWinScene);
+
+//                goToWinScene();
+        }
+    }
+
+    public int getEnemyCount() {
+        return enemyCount;
+    }
+
+    public ScoreManager getScoreManager() {
+        return scoreManager;
+    }
+
     public int getCurrency() {
         return currency;
+    }
+
+    public void goToWinScene() {
+        scoreManager.saveScore("speler");
+
+        setScene(4); // Of het juiste ID van je WinScene
     }
 
     public void setCurrency(int currency) {
